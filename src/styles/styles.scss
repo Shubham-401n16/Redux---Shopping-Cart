@@ -1,0 +1,58 @@
+@import 'base';
+
+.app{
+    padding-bottom: 150px;
+}
+
+header {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20vh;
+  background-color:black;
+
+  h1, p {
+    padding: 0 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+  footer {
+    background-color:black;
+    color:white;
+    line-height: 2;
+    margin: 0;
+    padding: $spacing - 20;
+    text-align: center;
+
+    h1{
+      align-items: flex-start;
+    }
+
+    #external-account {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      img {
+        padding: 2px;
+        margin: 0 1rem;
+        border: 1px solid #ddd;
+        width: 20px;
+    
+      }
+  }
+
+  .main-product{
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .main-div {
+  padding-bottom: 300px;
+  }
