@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
+import rtkStore from './rtk-store'
 import './styles/styles.scss';
 import Products from './components/Products';
 import Categories from './components/Categories';
@@ -15,7 +16,7 @@ import SimpleCart from './components/SimpleCart';
 
 function App() {
     return (
-        <Provider store={store}>
+        <Provider store={rtkStore}>
             <div className='App'>
                 <Header />
                 <div className ='main-div'>

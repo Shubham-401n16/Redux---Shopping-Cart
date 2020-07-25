@@ -30,6 +30,7 @@
 * npm install bootstrap
 * npm install react-redux redux
 * npm install @material-ui/core
+* npm install @reduxjs/toolkit
 
   
 #### Tests
