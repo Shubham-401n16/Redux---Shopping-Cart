@@ -1,13 +1,8 @@
 import { combineReducers } from "redux";
-import {configureStore} from '@reduxjs/toolkit'
-import cartReducer from "./cartReducer";
-import categoriesReducer from "./categoriesReducer";
-import productsReducer from "./productsReducer";
-
-
-import products from './products-slice';
-import categories from './categories-slice';
-import cart from './cart-slice';
+import { configureStore } from "@reduxjs/toolkit";
+import products from "./products-slice";
+import categories from "./categories-slice";
+import cart from "./cart-slice";
 
 let reducer = combineReducers({ categories, products, cart });
 
@@ -21,4 +16,3 @@ export default store;
 // });
 
 // const store = configureStore({ reducer: allReducers})
-
