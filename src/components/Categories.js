@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Button } from "@material-ui/core";
 //import * as actions from '../store/storeAction';
-import * as actions from "../store/store-actions";
+//import * as actions from "../store/store-actions";
+
+import {getCategories, changeCategory} from '../rtk-store/categories-slice';
 
 function Categories(props) {
   const { getCategories, changeCategory } = props;
@@ -39,10 +41,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, getState) => ({
-  getCategories: data => dispatch(actions.getCategories(data)),
-  changeCategory: payload => dispatch(actions.changeCategory(payload))
-});
+// const mapDispatchToProps = (dispatch, getState) => ({
+//   getCategories: data => dispatch(actions.getCategories(data)),
+//   changeCategory: payload => dispatch(actions.changeCategory(payload))
+// });
+
+const mapDispatchToProps = {getCategories, changeCategory}
 
 export default connect(
   mapStateToProps,

@@ -9,6 +9,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import * as actions from "../store/store-actions.js";
+import {get, addToCart} from '../rtk-store/products-slice';
+import {add} from '../rtk-store/cart-slice';
 
 const useStyles = makeStyles({
   root: {
@@ -25,7 +27,9 @@ function Products(props) {
 
   // only show the products that belong to the current category
 
-  const { getProducts, addToCart } = props;
+  // const { getProducts, addToCart } = props;
+
+  const {getProducts, addToCart, add_To_Cart} = props;
 
   useEffect(() => {
     getProducts();
@@ -98,10 +102,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, getState) => ({
-  getProducts: data => dispatch(actions.getProducts(data)),
-  addToCart: data => dispatch(actions.addToCart(data))
-});
+const mapDispatchToProps = {getProducts, addToCart, add_To_Cart};
+
+// const mapDispatchToProps = (dispatch, getState) => ({
+//   getProducts: data => dispatch(actions.getProducts(data)),
+//   addToCart: data => dispatch(actions.addToCart(data))
+// });
 
 export default connect(
   mapStateToProps,

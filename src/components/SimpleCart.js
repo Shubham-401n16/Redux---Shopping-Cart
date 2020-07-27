@@ -11,6 +11,8 @@ import {
 import { Delete } from "@material-ui/icons";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import * as actions from "../store/store-actions.js";
+import {removeFromCart} from '../rtk-store/cart-slice';
+import {remove} from '../rtk-store/products-slice';
 
 function SimpleCart(props) {
   const { removeFromCart } = props;
@@ -25,6 +27,7 @@ function SimpleCart(props) {
         <Button
           onClick={e => {
             removeFromCart(item);
+            remove(item)
           }}
         >
           <Delete />
@@ -54,9 +57,11 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = (dispatch, getState) => ({
-  removeFromCart: data => dispatch(actions.removeFromCart(data))
-});
+const mapDispatchToProps = {removeFromCart, remove};
+
+// const mapDispatchToProps = (dispatch, getState) => ({
+//   removeFromCart: data => dispatch(actions.removeFromCart(data))
+// });
 
 export default connect(
   mapStateToProps,
