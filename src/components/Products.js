@@ -8,9 +8,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import * as actions from "../store/store-actions.js";
-import {get, addToCart} from '../rtk-store/products-slice';
-import {add} from '../rtk-store/cart-slice';
+import { getProducts, addToCart } from "../rtk-store/products-slice";
+import { add_To_Cart } from "../rtk-store/cart-slice";
 
 const useStyles = makeStyles({
   root: {
@@ -29,7 +28,7 @@ function Products(props) {
 
   // const { getProducts, addToCart } = props;
 
-  const {getProducts, addToCart, add_To_Cart} = props;
+  const { getProducts, addToCart, add_To_Cart } = props;
 
   useEffect(() => {
     getProducts();
@@ -69,6 +68,7 @@ function Products(props) {
               color="primary"
               onClick={() => {
                 addToCart(props.products[i]);
+                add_To_Cart(props.products[i]);
               }}
               disabled={props.products[i].stock < 1 ? true : false}
             >
@@ -102,7 +102,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {getProducts, addToCart, add_To_Cart};
+const mapDispatchToProps = { getProducts, addToCart, add_To_Cart };
 
 // const mapDispatchToProps = (dispatch, getState) => ({
 //   getProducts: data => dispatch(actions.getProducts(data)),

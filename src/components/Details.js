@@ -1,28 +1,25 @@
-import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import SimpleCart from './SimpleCart';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import SimpleCart from "./SimpleCart";
 
 // import { getOneProduct, addToCart } from '../store/products-actions';
-import { getOneProduct, addToCart } from '../rtk-store/products-slice';
-import { add_To_Cart } from '../rtk-store/cart-slice';
-
+import { getOneProduct, addToCart } from "../rtk-store/products-slice";
+import { add_To_Cart } from "../rtk-store/cart-slice";
 
 import {
-  Grid, 
+  Grid,
   Card,
-  CardContent, 
-  Accordion, 
-  AccordionDetails, 
-  AccordionSummary, 
+  CardContent,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Typography,
   Button
-} from '@material-ui/core';
-
+} from "@material-ui/core";
 
 function ProductDetails(props) {
-
-  const {getOneProduct, productToView, addToCart, add} = props;
+  const { getOneProduct, productToView, addToCart, add } = props;
   const id = props.match.params.id;
 
   useEffect(() => {
@@ -31,46 +28,71 @@ function ProductDetails(props) {
 
   const styles = {
     gridContainer: {
-      width: '50%',
-      margin: 'auto'
+      width: "50%",
+      margin: "auto"
     },
     title: {
-      textAlign: 'center'
+      textAlign: "center"
     },
     stock: {
-      textAlign: 'start'
+      textAlign: "start"
     },
     price: {
-      textAlign: 'end'
+      textAlign: "end"
     }
-  }
+  };
 
-  return (<>
-      <Grid container justify='flex-end' alignItems='center'>
+  return (
+    <>
+      <Grid container justify="flex-end" alignItems="center">
         <SimpleCart />
       </Grid>
-      <Grid container spacing={2} justify='center' alignItems='center' style={styles.gridContainer}>
+      <Grid
+        container
+        spacing={2}
+        justify="center"
+        alignItems="center"
+        style={styles.gridContainer}
+      >
         <Grid item xs={12}>
           <Card style={styles.card}>
             <CardContent>
-              <Grid container spacing={3} justify='center' alignItems='center'>
+              <Grid container spacing={3} justify="center" alignItems="center">
                 <Grid item xs={12}>
-                  <Typography color='textPrimary' variant='h1' component='h2' gutterBottom style={styles.title}>
+                  <Typography
+                    color="textPrimary"
+                    variant="h1"
+                    component="h2"
+                    gutterBottom
+                    style={styles.title}
+                  >
                     {productToView.name}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography color='textSecondary' variant='body1' gutterBottom>
+                  <Typography
+                    color="textSecondary"
+                    variant="body1"
+                    gutterBottom
+                  >
                     {productToView.description}
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography color='textSecondary' variant='body1' style={styles.stock}>
-                    {`Stock: ${productToView.stock || ''}`}
+                  <Typography
+                    color="textSecondary"
+                    variant="body1"
+                    style={styles.stock}
+                  >
+                    {`Stock: ${productToView.stock || ""}`}
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography color='textSecondary' variant='body1' style={styles.price}>
+                  <Typography
+                    color="textSecondary"
+                    variant="body1"
+                    style={styles.price}
+                  >
                     ${productToView.price}
                   </Typography>
                 </Grid>
@@ -79,26 +101,28 @@ function ProductDetails(props) {
           </Card>
         </Grid>
         <Grid item xs={12}>
-          <Button 
-            color='primary'
-            fullWidth='true'
-            variant='contained'
-            disabled={props.addButtonDisabled || productToView.stock < 1 ? true : false}
-            onClick={(e) => {
+          <Button
+            color="primary"
+            fullWidth="true"
+            variant="contained"
+            disabled={
+              props.addButtonDisabled || productToView.stock < 1 ? true : false
+            }
+            onClick={e => {
               addToCart(productToView);
               add(productToView);
             }}
-          >ADD TO CART</Button>
+          >
+            ADD TO CART
+          </Button>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant='h5'>
-            Related Items
-          </Typography>
+          <Typography variant="h5">Related Items</Typography>
         </Grid>
         <Grid item xs={4}>
           <Card>
             <CardContent>
-              <Typography variant='body2' display='inline' align='center'>
+              <Typography variant="body2" display="inline" align="center">
                 Suggested Item
               </Typography>
             </CardContent>
@@ -107,7 +131,7 @@ function ProductDetails(props) {
         <Grid item xs={4}>
           <Card>
             <CardContent>
-              <Typography variant='body2' display='inline' align='center'>
+              <Typography variant="body2" display="inline" align="center">
                 Suggested Item
               </Typography>
             </CardContent>
@@ -116,16 +140,14 @@ function ProductDetails(props) {
         <Grid item xs={4}>
           <Card>
             <CardContent>
-              <Typography variant='body2' display='inline' align='center'>
+              <Typography variant="body2" display="inline" align="center">
                 Suggested Item
               </Typography>
             </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant='h5'>
-            Product Details
-          </Typography>
+          <Typography variant="h5">Product Details</Typography>
         </Grid>
         <Grid item xs={12}>
           <Accordion>
@@ -134,12 +156,10 @@ function ProductDetails(props) {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography variant='body2'>
-                Specifications
-              </Typography>
+              <Typography variant="body2">Specifications</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant='body3' color='textSecondary'>
+              <Typography variant="body3" color="textSecondary">
                 Sample Specs
               </Typography>
             </AccordionDetails>
@@ -150,29 +170,30 @@ function ProductDetails(props) {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography variant='body2'>
-                User Reviews
-              </Typography>
+              <Typography variant="body2">User Reviews</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant='body3' color='textSecondary'>
+              <Typography variant="body3" color="textSecondary">
                 Sample Reviews
               </Typography>
             </AccordionDetails>
           </Accordion>
         </Grid>
       </Grid>
-  </>)
+    </>
+  );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     productToView: state.products.productToView,
     addButtonDisabled: state.products.addButtonDisabled
-  }
-}
+  };
+};
 
-const mapDispatchToProps = {addToCart, getOneProduct, add};
+const mapDispatchToProps = { addToCart, getOneProduct, add_To_Cart };
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductDetails);

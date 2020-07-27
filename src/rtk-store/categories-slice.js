@@ -24,7 +24,7 @@ export const {initialCategory, changeCategory} = categoriesSlice.actions;
 
 export const getCategories = () => async dispatch => {
   let results = await axios.get
-  ('https://js-401-lab-07.herokuapp.com/api/v1/categories');
+  ('https://api-js401.herokuapp.com/api/v1/categories');
   dispatch(initialCategory(results.data.results));
 }
 

@@ -10,7 +10,6 @@ import {
 } from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import * as actions from "../store/store-actions.js";
 import {removeFromCart} from '../rtk-store/cart-slice';
 import {remove} from '../rtk-store/products-slice';
 
